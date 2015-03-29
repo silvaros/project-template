@@ -1,0 +1,18 @@
+{
+	"name": "Gymme",
+	"description": "",
+	"version": "0.0.1",
+	"author": "Jacob Knitter",
+	"engines": {
+		"node": "0.10.x",
+		"npm": "1.4.x"
+	},
+	"dependencies": {
+		"express": "~4.7.2",
+		"glob": "~4.0.5",
+		"lodash": "~2.4.1"		
+	},
+	"devDependencies": {
+
+	}
+}
