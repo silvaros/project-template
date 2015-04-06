@@ -1,0 +1,37 @@
+// first configure require
+var requirejs = require('./app/config/requireInit');
+
+// init app
+requirejs(['config/appInit'], function(app){
+	var PORT = process.env.PORT || 4000;
+	app.listen(PORT);
+	console.log('server started on port %s', PORT);	
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

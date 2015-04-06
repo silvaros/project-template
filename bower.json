@@ -1,12 +1,12 @@
 {
-	"name": "Gymme",
-	"version": "0.0.1",
-	"description": "",
-	"dependencies": {
-		"bootstrap": "latest",
-		"backbone": "latest",
-		"jquery": "latest",
-		"knockout": "latest",
-		"knockback": "latest"
-	}
+  "name": "Gymme",
+  "version": "0.0.1",
+  "description": "",
+  "dependencies": {
+    "bootstrap": "~3.3.4",
+    "backbone": "~1.1.2",
+    "jquery": "~2.1.3",
+    "knockout": "~3.3.0",
+    "knockback": "~0.20.5"
+  }
 }

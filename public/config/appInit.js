@@ -1,11 +1,20 @@
  
+var vm = {
+	getCode: function(){
+		$.ajax({
+			dataType: json, 
+			url: '/api/abc/123'
+		});	
+	}
+}
+
 var Router = Backbone.Router.extend({
     routes: {
         "": "index"
     },
 
     index: function(){
-    	console.log("in index")	
+    	$('section .content').append()
     }
 });
 
