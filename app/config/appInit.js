@@ -5,9 +5,7 @@ define([
 function( globber, path, app ){
 	// register routes
 	var files = globber.get('./app/routes/*.js');
-	console.log('files.length = ' + files.length);
 	files.forEach(function(route) {
-		console.log('registering');
 		require(path.resolve(route))(app);
 	});
 

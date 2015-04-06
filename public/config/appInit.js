@@ -1,9 +1,9 @@
  
 var vm = {
 	getCode: function(){
-		$.ajax({
-			dataType: json, 
-			url: '/api/abc/123'
+		return $.ajax({
+			//dataType: 'json', 
+			url: '/api/code/abc/123'
 		});	
 	}
 }
@@ -14,7 +14,9 @@ var Router = Backbone.Router.extend({
     },
 
     index: function(){
-    	$('section .content').append()
+    	vm.getCode().then(function(code){
+       		$('section.content').append('<hi>' + code + '</h1>');
+    	});
     }
 });
 
