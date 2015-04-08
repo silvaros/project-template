@@ -10,13 +10,6 @@ function(globber){
 
 		assets: {
 			css: [
-				// libraries
-				'public/lib/bootstrap/dist/css/bootstrap.css',
-				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
-
-
-				// ours
-				'public/modules/**/css/*.css',
 				'public/css/app.css'	
 			],
 			js: [
@@ -26,11 +19,7 @@ function(globber){
 
 				'public/lib/backbone/backbone.js',
 				'public/lib/knockout/dist/knockout.js',
-				'public/lib/knockback/knockback.min.js',
-				
-
-				// ours
-				'public/config/appInit.js'
+				'public/lib/knockback/knockback.min.js'
 			],
 			tests: [
 				'public/modules/*/tests/*.js'
