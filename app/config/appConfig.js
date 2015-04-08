@@ -19,7 +19,11 @@ function(globber){
 
 				'public/lib/backbone/backbone.js',
 				'public/lib/knockout/dist/knockout.js',
-				'public/lib/knockback/knockback.min.js'
+				'public/lib/knockback/knockback.min.js',
+				
+
+				// ours
+				'public/config/appInit.js'
 			],
 			tests: [
 				'public/modules/*/tests/*.js'
