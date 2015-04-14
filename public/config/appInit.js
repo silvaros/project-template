@@ -1,25 +1,50 @@
 require([
-    'knockout',
-    'text!modules/index/templates/login.html',
-
-    'modules/index/viewmodels/loginViewModel'
+    'knockout'
 ], 
-function(ko, loginHtml, loginVM){
+function(ko){
     window.Gymme = {};
+
+    function appendAndApply(html, vm){
+        var content = $('section.content');
+
+        ko.cleanNode( content[0] );
+        content.html( html );
+        
+        if(vm != undefined){
+            var fragmentRoot = content.children()[0];
+            ko.applyBindings(vm, fragmentRoot);
+        }
+    }
 
     var Router = Backbone.Router.extend({
         routes: {
-            "": "index",
-            "about": "about"
+            "": function(){
+                require([
+                    'text!modules/index/templates/login.html',
+                    'modules/index/viewmodels/loginViewModel'
+                ],
+                function(loginHtml, loginVM){
+                    appendAndApply(loginHtml, loginVM);   
+                });            
+            },
+
+            "about":function(){
+            
+            },
+            
+            "list":  function(){
+                require([
+                    'text!modules/search/templates/search.html',
+                    'modules/search/viewmodels/searchViewModel'
+                ],
+                function(searchHtml, searchVM){
+                    appendAndApply(searchHtml, searchVM);   
+                });        
+            }
         },
 
-        about: function(){
-            $('section.content').html('<hi>about us</h1>');
-        },
-
-        index: function(){
-            $('section.content').html(loginHtml);
-            ko.applyBindings(loginVM, $('section.content').children()[0]);
+        route: function(route){
+            debugger;
         }
     });
 
