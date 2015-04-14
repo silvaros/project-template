@@ -10,7 +10,7 @@ function(Backbone){
 		},
 
 		url: function(){
-			return "";	
+			return "/api/notifyme";	
 		}
 	});
 

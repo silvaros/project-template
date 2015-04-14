@@ -22,9 +22,10 @@ function(ko, kb){
             "": function(){
                 require([
                     'text!modules/core/templates/notifyMe.html',
-                    'modules/core/models/notifyMeModel'
-                ], function(notifyMeHtml, NotifyMeModel){
-                    appendAndApply( notifyMeHtml, kb.viewModel(new NotifyMeModel()) );
+                    'modules/core/models/notifyMeModel',
+                    'modules/core/viewmodels/notifyMeViewModel'
+                ], function(notifyMeHtml, NotifyMeModel, NotifyMeViewModel){
+                    appendAndApply( notifyMeHtml, new NotifyMeViewModel(new NotifyMeModel()) );
                 });
             },
 
