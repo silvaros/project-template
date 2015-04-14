@@ -2,17 +2,53 @@
 
 @import "base";
 
-@body-bg:    pink;
+@body-bg: #666666;
 
 
 html, body {
 	padding: 0;
 	margin: 0;
+	height: 100%;
 }
 
 section {
 	&.content {
+		height: inherit;
 		padding: 10px;
 	}
 
+}
+
+.page-notify {
+	background-image: url("/images/gym.jpg");
+	text-align: center;
+	height: inherit;
+	display: flex;
+
+	input {	
+		border-radius: 2px;
+		border: 1px solid gray;
+		margin-bottom: 10px;
+		text-align: center;
+	}
+
+	.notify-form {
+		margin: auto;
+	}
+
+	.logo-text {
+		font-size: 50px;
+		font-variant: small-caps;
+		font-family: fantasy;
+		font-weight: bolder;
+	}
+}
+
+.notify-container {
+	background-color: white;
+	border-radius: 5px;
+	display: flex;
+	padding: 10px;
+	height: 70%;
+	margin: auto;
 }

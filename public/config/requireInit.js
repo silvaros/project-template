@@ -5,10 +5,12 @@ requirejs.config({
 
 	// please keep in abc order
 	paths: {
-		"text" : "lib/requirejs-text/text",
-
+		"backbone": "lib/backbone/backbone",
+		"globber": "../utils/globber",
+		"jquery": "lib/jquery/dist/jquery",
 		"knockout": "lib/knockout/dist/knockout",
-
-		"globber": "../utils/globber"
+		"knockback": "lib/knockback	/knockback",
+		"text": "lib/requirejs-text/text",
+		"underscore": "lib/underscore/underscore"
 	}
 });

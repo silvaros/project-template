@@ -1,7 +1,8 @@
 require([
-    'knockout'
+    'knockout',
+    'knockback'
 ], 
-function(ko){
+function(ko, kb){
     window.Gymme = {};
 
     function appendAndApply(html, vm){
@@ -20,12 +21,18 @@ function(ko){
         routes: {
             "": function(){
                 require([
-                    'text!modules/index/templates/login.html',
-                    'modules/index/viewmodels/loginViewModel'
-                ],
-                function(loginHtml, loginVM){
-                    appendAndApply(loginHtml, loginVM);   
-                });            
+                    'text!modules/core/templates/notifyMe.html',
+                    'modules/core/models/notifyMeModel'
+                ], function(notifyMeHtml, NotifyMeModel){
+                    appendAndApply( notifyMeHtml, kb.viewModel(new NotifyMeModel()) );
+                });
+            },
+
+            "login": function(){
+                require([
+                    'text!modules/core/templates/login.html',
+                    'modules/core/viewmodels/loginViewModel'
+                ], appendAndApply);
             },
 
             "about":function(){
@@ -41,10 +48,6 @@ function(ko){
                     appendAndApply(searchHtml, searchVM);   
                 });        
             }
-        },
-
-        route: function(route){
-            debugger;
         }
     });
 
