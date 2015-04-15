@@ -1,20 +1,22 @@
 <div class="page-notify">
 	<div class="notify-container">
-		<div class="notify-form">
-			<div class="logo-text">Fyttle</div>
+		<div class="notify-form signup">
+			<div class="logo-title">Fyttle</div>
 			<div class="message">
 				Insert propaganda here
 				<br/><br/>
 				Sign up when to be notified when Fyttle launches!
 			</div>
 
-			<div id="confirmMsg" class="alert alert-success email" role="alert"></div>
-						<br/>
+<!-- 			<div id="confirmMsg" class="alert alert-success email" role="alert"></div>
+			<br/> -->
+			
 			<input type="text" class="form-control" data-bind="value: email" placeholder="Enter Email Here"/>
 			<div id="email" class="alert alert-danger email" role="alert">Please enter a valid email</div>
 			<br/>
-			
-			<input type="text" class="form-control" data-bind="value: zipCode" placeholder="Zip (optional)"/>
+
+			<input type="text" class="form-control" data-bind="value: zipCode" placeholder="Zip"/>
+			<div id="zipcode" class="alert alert-danger zipcode" role="alert">Please enter a valid zipcode</div>
 			<br/>
 			
 			<input type="text" class="form-control" data-bind="value: age" placeholder="Age (optional)"/>
@@ -22,6 +24,15 @@
 			
 			<button type="button" class="btn btn-primary" data-bind='click: onNotifyMeClick.bind($data)'>Notify Me</button>
 			<br/><br/>
+		</div>
+
+		<div class="notify-form success">
+			<div class="logo-title">Fyttle</div>
+			<div class="message">
+				<div class="alert alert-success" role="alert">Thanks for signing up <span data-bind="text: emailSubmitted"></span>!</div>
+
+				<div>More details will be emailed to you shortly.</div>
+			</div>
 		</div>
 	</div>
 </div>
