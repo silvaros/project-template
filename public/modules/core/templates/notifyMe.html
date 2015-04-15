@@ -9,12 +9,13 @@
 			</div>
 			<br/>
 			<input type="text" class="form-control" data-bind="value: email" placeholder="Enter Email Here"/>
+			<div id="email" class="alert alert-danger email" role="alert">Please enter a valid email</div>
 			<br/>
 			<input type="text" class="form-control" data-bind="value: zipCode" placeholder="Zip (optional)"/>
 			<br/>
 			<input type="text" class="form-control" data-bind="value: age" placeholder="Age (optional)"/>
 			<br/>
-			<button type="button" class="btn btn-primary" data-bind='click: onNotifyMeClick'>Notify Me</button>
+			<button type="button" class="btn btn-primary" data-bind='click: onNotifyMeClick.bind($data)'>Notify Me</button>
 			<br/><br/>
 		</div>
 	</div>
