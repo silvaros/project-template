@@ -33,25 +33,24 @@ function(ko, kb, $){
 	    	console.log("vm.zipCode : ", vm.zipCode());
 	    	console.log("vm.age : ", vm.age());
 
-	    	if(!vm.email()) {
+			var emailRx = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    		if( !vm.email() || !emailRx.test(vm.email()) ) {
 	    		$('#email').css('display','block');
 	    	}
-
-	    	if(vm.email()) {
-	    		$('#email').css('display','none');
-	    	}
-
-	    	vm.model().save(null, {
-	    		success: function(){
-	    			//self.hideErrors(errors);
-	    			debugger	
-	    		},
-	    		error: function() {
-	    			//self.showErrors(errors);
-	    			debugger
-	    		},
-	    		validate: true
-	    	})
+	    	else {
+				$('#email').css('display','none');
+		    	
+		    	vm.model().save(null, {
+		    		success: function(model, resp){
+		    			$('#confirmMsg').css('display','block').text(resp.responseJSON.msg);
+		    			//self.hideErrors(errors);
+		    		},
+		    		error: function() {
+		    			//self.showErrors(errors);
+		    		},
+		    		validate: false
+		    	})
+		    }
 	    }
 	});
 })
