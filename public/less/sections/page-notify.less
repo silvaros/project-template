@@ -1,0 +1,38 @@
+.page-notify {
+	background-image: @page-notify-background-image;
+	background-position: center;
+	background-size: cover;
+	text-align: center;
+	height: 100%;
+	min-height: 400px;
+	display: flex;
+
+	input {	
+		border-radius: page-notify-input-border-radius;
+		border: @page-notify-input-border;
+		text-align: center;
+	}
+
+	.notify-form {
+		margin: auto;
+	}
+
+	.logo-text {
+		font-size: @page-notify-logo-text-font-size;
+		font-variant: @page-notify-logo-text-font-variant;
+		font-family: @page-notify-logo-text-font-family;
+		font-weight: @page-notify-logo-text-font-weight;
+	}
+
+	.notify-container {
+		background-color: @page-notify-notify-container-background-color;
+		border: @page-notify-notify-container-border;
+		border-radius: @page-notify-notify-container-border-radius;
+		display: flex;
+		padding: 10px;
+		height: 70%;
+		margin: auto;
+		min-height: 400px;
+		overflow: hidden;
+	}
+}

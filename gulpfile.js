@@ -7,21 +7,7 @@
 
 // Gulp and plugins
 var gulp = require('gulp'),
-    less = require('gulp-less'),
-    iconfont = require('gulp-iconfont');
- 
-gulp.task('bfont', function(){
-  gulp.src(['public/svg/*.svg'])
-    .pipe(iconfont({
-      fontName: 'gf', // required 
-      appendCodepoints: true // recommended option 
-    }))
-      .on('codepoints', function(codepoints, options) {
-        // CSS templating, e.g. 
-        console.log(codepoints, options);
-      })
-    .pipe(gulp.dest('public/fonts/'));
-});
+    less = require('gulp-less');
 
 gulp.task('styles', function() {
     return gulp.src(['public/less/app.less'])
