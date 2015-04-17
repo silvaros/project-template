@@ -20,7 +20,9 @@
 			<input type="text" class="form-control" data-bind="value: age" placeholder="Age (optional)"/>
 			<br/>
 			
-			<button type="button" class="btn btn-primary" data-bind='click: onNotifyMeClick.bind($data)'>Notify Me</button>
+			<button id="notifyBtn" type="button" class="btn btn-primary" data-bind='click: onNotifyMeClick.bind($data)'>Notify Me</button>
+			<button type="button" class="btn btn-primary" data-bind='click: clear.bind($data)'>Clear</button>
+
 			<br/><br/>
 		</div>
 	</div>

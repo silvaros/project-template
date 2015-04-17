@@ -26,28 +26,30 @@ function(ko, kb, $){
 			};
 	    },
 
+	    clear: function(){
+	    	$('#confirmMsg').css('display','none')
+	    	$('#email').css('display','none');
+		    $('#notifyBtn').removeClass('disabled');				
+	    },
+
 	    onNotifyMeClick: function(vm, e){
-	    	var self = this;
-
-	    	console.log("vm.email : ", vm.email());
-	    	console.log("vm.zipCode : ", vm.zipCode());
-	    	console.log("vm.age : ", vm.age());
-
 			var emailRx = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     		if( !vm.email() || !emailRx.test(vm.email()) ) {
 	    		$('#email').css('display','block');
 	    	}
 	    	else {
+	    		$(e.target).addClass('disabled');
 				$('#email').css('display','none');
 		    	
 		    	vm.model().save(null, {
 		    		success: function(model, resp){
 		    			$('#confirmMsg').css('display','block').text(resp.responseJSON.msg);
-		    			//self.hideErrors(errors);
-		    		},
+		    			//this.hideErrors(errors);
+		    		}.bind(this),
 		    		error: function() {
-		    			//self.showErrors(errors);
-		    		},
+		    			$(e.target).removeClass('disabled');
+		    			//this.showErrors(errors);
+		    		}.bind(this),
 		    		validate: false
 		    	})
 		    }
