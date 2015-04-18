@@ -1,27 +1,33 @@
 <div class="page-notify">
 	<div class="notify-container">
-		<div class="notify-form">
-			<div class="logo-text">Fyttle</div>
+		<div class="notify-form signup">
+			<div class="logo-title">Fyttle</div>
 			<div class="message">
 				Insert propaganda here
 				<br/><br/>
 				Sign up when to be notified when Fyttle launches!
 			</div>
 
-			<div id="confirmMsg" class="alert alert-success email" role="alert"></div>
-						<br/>
-			<input type="text" class="form-control" data-bind="value: email" placeholder="Enter Email Here"/>
-			<div id="email" class="alert alert-danger email" role="alert">Please enter a valid email</div>
-			<br/>
+			<div id="confirmMsg" class="alert alert-success" role="alert"></div>
 			
-			<input type="text" class="form-control" data-bind="value: zipCode" placeholder="Zip (optional)"/>
-			<br/>
+			<div class='validation-input email'>
+				<div id="email" class="alert" role="alert">Please enter a valid email</div>
+				<input type="text" class="form-control" data-bind="value: email" placeholder="Enter Email Here"/>
+			</div>
 			
-			<input type="text" class="form-control" data-bind="value: age" placeholder="Age (optional)"/>
+			<div class='validation-input zipcode'>
+				<div id="zipcode" class="alert" role="alert">Please enter a valid zipcode</div>
+				<input type="text" class="form-control" data-bind="value: zipcode" placeholder="Zip (optional)"/>
+			</div>
+			
+			<div class='validation-input age'>
+				<div id="age" class="alert" role="alert">Please enter a valid age</div>
+				<input type="text" class="form-control" data-bind="value: age" placeholder="Age (optional)"/>
+			</div>
 			<br/>
 			
 			<button id="notifyBtn" type="button" class="btn btn-primary" data-bind='click: onNotifyMeClick.bind($data)'>Notify Me</button>
-			<button type="button" class="btn btn-primary" data-bind='click: clear.bind($data)'>Clear</button>
+			<button type="button" class="btn btn-primary" data-bind='click: clearForm.bind($data)'>Clear</button>
 
 			<br/><br/>
 		</div>

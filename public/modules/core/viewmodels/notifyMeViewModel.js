@@ -9,49 +9,67 @@ function(ko, kb, $){
 	    constructor: function(model, options) {
 	    	this.model = ko.observable(model);
 		    this.email = kb.observable(model, {key: 'email'});
-		    this.zipCode = kb.observable(model, {key: 'zipCode'});
+		    this.zipcode = kb.observable(model, {key: 'zipcode'});
 		    this.age = kb.observable(model, {key: 'age'});
-
-		   	this.showErrors = function(errors) {
-			    _.each(errors, function (error) {
-			        var controlGroup = this.$('.' + error.name);
-			        controlGroup.addClass('error');
-			        controlGroup.find('.help-inline').text(error.message);
-			    }, this);
-			};
-
-			this.hideErrors = function () {
-			    this.$('.control-group').removeClass('error');
-			    this.$('.help-inline').text('');
-			};
 	    },
 
-	    clear: function(){
-	    	$('#confirmMsg').css('display','none')
-	    	$('#email').css('display','none');
-		    $('#notifyBtn').removeClass('disabled');				
+	    clearForm: function(){
+	    	// not input validation, we can use display
+	    	$('#confirmMsg').css('display','none');
+	        $('#notifyBtn').removeClass('disabled');
+
+	        this.clearErrors();
+
+	        this.email("");
+			this.zipcode("");
+			this.age("");
+		},
+
+	    clearErrors: function(){
+	    	$('.validation-input').removeClass('error');
 	    },
 
 	    onNotifyMeClick: function(vm, e){
+	    	this.clearErrors();
+
+			var passed = true;
+
+			var emailStr = vm.email();
+			var zipcodeStr = vm.zipcode();
+			var ageStr = vm.age();
+			
+			var emailInputDiv = $('.validation-input.email');
+			var zipcodeInputDiv = $('.validation-input.zipcode');
+			var ageInputDiv = $('.validation-input.age');
+
 			var emailRx = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-    		if( !vm.email() || !emailRx.test(vm.email()) ) {
-	    		$('#email').css('display','block');
+    		if( !emailStr || !emailRx.test(emailStr) ) {
+    			emailInputDiv.addClass('error');
+    			passed = false;
 	    	}
-	    	else {
+
+	    	if( zipcodeStr != "" && (zipcodeStr.length !== 5 || isNaN(zipcodeStr)) ) {
+	    		zipcodeInputDiv.addClass('error');
+	    		passed = false;
+	    	}
+	    	
+	    	if( ageStr != "" && (isNaN(ageStr) || parseInt(ageStr) > 120 || parseInt(ageStr) < 17) ) {
+	    		ageInputDiv.addClass('error');
+	    		passed = false;
+			}
+	    	
+	    	if(passed) {
 	    		$(e.target).addClass('disabled');
-				$('#email').css('display','none');
-		    	
+				
 		    	vm.model().save(null, {
-		    		success: function(model, resp){
+		    		success: function(model, resp) {
 		    			$('#confirmMsg').css('display','block').text(resp.responseJSON.msg);
-		    			//this.hideErrors(errors);
 		    		}.bind(this),
 		    		error: function() {
 		    			$(e.target).removeClass('disabled');
-		    			//this.showErrors(errors);
 		    		}.bind(this),
 		    		validate: false
-		    	})
+		    	});
 		    }
 	    }
 	});

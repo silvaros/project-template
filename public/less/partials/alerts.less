@@ -1,9 +1,11 @@
 .alert {
-	padding: 3px;
+	font-weight: bold;
+	font-stretch: expanded;
+	padding: 0px;
 	margin-bottom: 0;
-	margin-top: 5px;
+	visibility: hidden;
 
-	&.email {
-		display: none;
+	&.error {
+		color: @page-notify-alert-error-font-color;
 	}
 }

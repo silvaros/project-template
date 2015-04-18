@@ -9,7 +9,7 @@ function(Backbone){
 
 		defaults: { 
 			email: '',
-			zipCode: '',
+			zipcode: '',
 			age:''
 		},
 
@@ -20,7 +20,7 @@ function(Backbone){
 		    if (!attrs.email) {
 		        errors.push({name: 'email', message: 'Please add an email.'});
 		    }
-		    if (!attrs.zipCode) {
+		    if (!attrs.zipcode) {
 		        errors.push({name: 'zipcode', message: 'Please add a zipcode.'});
 		    }
 
@@ -46,7 +46,7 @@ function(Backbone){
 	        // gender: {
 	        //     required: false
 	        // },
-	       	zipCode: {
+	       	zipcode: {
 	            required: true,
 	            msg: 'Please enter a valid zipcode'
 	        },

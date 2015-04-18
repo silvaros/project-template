@@ -11,7 +11,7 @@ function(fs, path, os){
 
 			// if blank dont save to file
 			req.body.age != "" || delete req.body.age;
-			req.body.zipCode != "" || delete req.body.zipCode;
+			req.body.zipcode != "" || delete req.body.zipcode;
 
 			var dataToAdd = JSON.stringify(req.body);
 
