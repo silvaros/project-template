@@ -1,8 +1,8 @@
 // loaded by index.js -> appInit.js
 define([
-	'express', './appConfig'
+	'body-parser', 'express', './appConfig'
 ],
-function(express, appConfig){
+function(bodyParser, express, appConfig){
 	var app = express();
 
 	app.locals.description = appConfig.description;
@@ -13,6 +13,9 @@ function(express, appConfig){
 	app.locals.cssFiles = appConfig.getCSSAssets( appConfig.assets.css );
 	app.locals.jsFiles = appConfig.getJavaScriptAssets( appConfig.assets.js );
 
+	app.use(bodyParser.urlencoded({ extended: false }));
+	app.use(bodyParser.json());
+	
 	// Setting the app router and static folder
 	app.use(express.static(require('path').resolve('./public')));
 
