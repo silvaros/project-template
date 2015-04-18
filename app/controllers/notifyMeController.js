@@ -13,8 +13,11 @@ function(fs, path, os){
 			req.body.age != "" || delete req.body.age;
 			req.body.zipcode != "" || delete req.body.zipcode;
 
-			var dataToAdd = JSON.stringify(req.body);
+			// add time stamp
+			req.body.timestamp = new Date().getTime();
 
+			var dataToAdd = JSON.stringify(req.body);
+			
 			fs.appendFile(path.resolve( listFilePath ), (dataToAdd + os.EOL), function(err){
 				if(err){
 					res.status(400).send({ responseJSON: { status: 400, msg: err} });

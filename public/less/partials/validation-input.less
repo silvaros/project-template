@@ -1,10 +1,17 @@
 .validation-input {
+	/*  this often used with alerts, which set display: none, 
+		but we want input validation to be non-obtrusive, so we use visibility instead */
+	.alert {
+		display: block;
+		visibility: hidden;	
+	}
+	
 	&.error {
 		input {
 			border: 1px solid @page-notify-alert-error-font-color;
 		}
 		
-		div.alert {
+		.alert {
 			visibility: visible;
 			color: @page-notify-alert-error-font-color;
 		}
