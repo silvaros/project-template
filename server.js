@@ -1,5 +1,5 @@
 // first configure require
-var requirejs = require('./app/config/requireInit');
+var requirejs = require('./app/requireInit');
 
 // init app
 requirejs(['config/appInit'], function(app){

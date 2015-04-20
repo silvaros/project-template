@@ -1,6 +1,6 @@
 // loaded by index.js -> appInit.js
 define([
-	'body-parser', 'express', './appConfig'
+	'body-parser', 'express', './config/base'
 ],
 function(bodyParser, express, appConfig){
 	var app = express();
@@ -22,7 +22,7 @@ function(bodyParser, express, appConfig){
 	// server side templating 
 	app.engine('html', require('consolidate')[appConfig.templateEngine]);
 	app.set('view engine', 'jade');
-	app.set('views', './app/views');	
+	app.set('views', appConfig.viewsPath);	
 
 	return app;	
 })
