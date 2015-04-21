@@ -1,6 +1,5 @@
 define([
-	'fs', 'path', 'os'
-	'underscore'
+	'fs', 'path', 'os', 'underscore'
 ], 
 function(fs, path, os , _ ){
 	var listFilePath = 'app/data/notifyList.json';

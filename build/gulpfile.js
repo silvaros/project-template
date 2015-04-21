@@ -16,7 +16,7 @@ gulp.task('prod', ['prod-copy', 'prod-rjs', 'prod-less']);
 
 gulp.task('prod-copy', function(){
 	// copy all under app, keep data folder too, but no data
-	gulp.src(['app/**/*'], {cwd: basePath })
+	gulp.src(['app/**/*', '!app/data/**'], {cwd: basePath })
 	.pipe(gulp.dest(basePath+'production/app'));
 
 	/* copy all package files '.bowerrc, .gitignore, bower.json, package.json, server.js, 
