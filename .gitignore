@@ -10,3 +10,4 @@ app/tests/coverage/
 data/
 common/init.js
 public/css/app.css
+production/
