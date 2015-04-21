@@ -1,7 +1,8 @@
 define([
 	'fs', 'path', 'os'
+	'underscore'
 ], 
-function(fs, path, os){
+function(fs, path, os , _ ){
 	var listFilePath = 'app/data/notifyList.json';
 
 	return {
@@ -9,7 +10,7 @@ function(fs, path, os){
 			// not sure y responseJSON is getting in the req object
 			delete req.body.responseJSON;
 
-			dataToSave = _.clone(req.body);
+			var dataToSave = _.clone(req.body);
 			// if blank dont save to file
 			dataToSave.age != "" || delete dataToSave.age;
 			dataToSave.zipcode != "" || delete dataToSave.zipcode;

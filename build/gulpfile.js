@@ -18,13 +18,14 @@ gulp.task('prod-copy', function(){
 	// copy all under app, keep data folder too, but no data
 	gulp.src(['app/**/*'], {cwd: basePath })
 	.pipe(gulp.dest(basePath+'production/app'));
-	console.log("prod-copy-app complete");
 
 	/* copy all package files '.bowerrc, .gitignore, bower.json, package.json, server.js, 
 	keep data folder too, but no data */
 	gulp.src(['.bowerrc', 'bower.json', 'package.json', 'server.js'], {cwd: basePath })
 	.pipe(gulp.dest(basePath+'production'));
-	console.log("prod-copy-package-files complete");
+
+	gulp.src(['utils/**/*'], {cwd: basePath })
+	.pipe(gulp.dest(basePath+'production/utils'));
 });
 
 gulp.task('prod-rjs', function(){
