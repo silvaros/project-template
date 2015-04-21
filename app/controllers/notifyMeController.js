@@ -9,16 +9,17 @@ function(fs, path, os){
 			// not sure y responseJSON is getting in the req object
 			delete req.body.responseJSON;
 
+			dataToSave = _.clone(req.body);
 			// if blank dont save to file
-			req.body.age != "" || delete req.body.age;
-			req.body.zipcode != "" || delete req.body.zipcode;
+			dataToSave.age != "" || delete dataToSave.age;
+			dataToSave.zipcode != "" || delete dataToSave.zipcode;
 
 			// add time stamp
-			req.body.timestamp = new Date().getTime();
-
-			var dataToAdd = JSON.stringify(req.body);
+			dataToSave.timestamp = new Date().getTime();
+			// capture ip
+			dataToSave.ip = req.ip.substr(req.ip.lastIndexOf(':')+1);
 			
-			fs.appendFile(path.resolve( listFilePath ), (dataToAdd + os.EOL), function(err){
+			fs.appendFile(path.resolve( listFilePath ), (JSON.stringify(dataToSave) + os.EOL), function(err){
 				if(err){
 					res.status(400).send({ responseJSON: { status: 400, msg: err} });
 				}

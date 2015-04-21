@@ -3,6 +3,8 @@ define([
 	'body-parser', 'express', './config/base'
 ],
 function(bodyParser, express, appConfig){
+	process.env.PORT = appConfig.port || 3001;
+
 	var app = express();
 
 	app.locals.description = appConfig.description;

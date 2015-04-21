@@ -1,5 +1,6 @@
 define(function(){
  	return { 
+ 		port: 3001,
 		assets: {
 			css: [ 'public/css/app.css'	],
 			js: [
