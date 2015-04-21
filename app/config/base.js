@@ -1,9 +1,10 @@
 define([
 	'globber',
-	'underscore'
+	'underscore',
+	'./' + process.env.NODE_ENV	//environment config only need development atm
 ],
-function(globber, _ ){
-	var config = {
+function(globber, _, envConfig ){
+	return _.extend({
 		title: 'Gymme', 
 		description: '',
 		keywords: '',
@@ -24,5 +25,5 @@ function(globber, _ ){
 			var output = globber.get(cssFiles, 'public/');
 			return output;
 		}
-	}
+	}, envConfig || {});
 });

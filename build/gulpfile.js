@@ -35,7 +35,7 @@ gulp.task('prod-rjs', function(){
 		del(prodRoot + '/less', {force: true});
 		console.log("delete production/less");
 
-		// remove copied lib folder when we npm install the build let bower take over
+		// remove copied lib folder, when we npm install the build let bower take over
 		del(prodRoot + '/lib', {force: true});
 		console.log("delete production/lib");   	
    	}); 
