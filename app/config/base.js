@@ -5,7 +5,7 @@ define([
 ],
 function(globber, _, envConfig ){
 	return _.extend({
-		title: 'Gymme', 
+		title: 'New Project Title', 
 		description: '',
 		keywords: '',
 		templateEngine: 'jade',
