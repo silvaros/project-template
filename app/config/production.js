@@ -13,7 +13,6 @@ define(function(){
 				'public/modules/*/tests/*.js'
 			]
 		},
-
 		viewsPath:'./app/views'	
 	};
 });

@@ -2,8 +2,7 @@ var exec = require('child_process').exec,
 	del = require('del');
     eol = require('os').EOL;
 	gulp = require('gulp'),
-    ignore = require('gulp-ignore');
-	less = require('gulp-less'),
+    less = require('gulp-less');
 	
 	//minifyCSS = require('gulp-minify-css'),
     uglify = require('gulp-uglify');
@@ -16,15 +15,21 @@ gulp.task('prod', ['prod-copy', 'prod-rjs', 'prod-less']);
 
 gulp.task('prod-copy', function(){
 	// copy all under app, keep data folder too, but no data
-	gulp.src(['app/**/*', '!app/data/**'], {cwd: basePath })
+	gulp.src(['app/**/*', '!app/data/**', '!app/views/**'], {cwd: basePath })
+	.pipe(uglify())
+	//.on('error', function(err){ console.log(err); })
 	.pipe(gulp.dest(basePath+'production/app'));
 
-	/* copy all package files '.bowerrc, .gitignore, bower.json, package.json, server.js, 
-	keep data folder too, but no data */
+	gulp.src(['app/data', 'app/views/**'], {cwd: basePath })
+	//.on('error', function(err){ console.log(err); })
+	.pipe(gulp.dest(basePath+'production/app/views'));
+
+	// copy all package files '.bowerrc, bower.json, package.json, server.js
 	gulp.src(['.bowerrc', 'bower.json', 'package.json', 'server.js'], {cwd: basePath })
 	.pipe(gulp.dest(basePath+'production'));
 
 	gulp.src(['utils/**/*'], {cwd: basePath })
+	.pipe(uglify())
 	.pipe(gulp.dest(basePath+'production/utils'));
 });
 
@@ -55,14 +60,14 @@ gulp.task('prod-less', function(){
 //**** end main tasks to bundle the app ****//
 
 
-gulp.task('styles', function() {
+gulp.task('less', function() {
     return gulp.src(['public/less/app.less'], {cwd: basePath })
                 .pipe(less())
                 .pipe(gulp.dest(basePath+'public/css'));
 });
 
-gulp.task('wless', ['styles'], function() {
-    gulp.watch(basePath+'public/less/**', ['styles']);
+gulp.task('wless', ['less'], function() {
+    gulp.watch(basePath+'public/less/**', ['less']);
 });
 
 

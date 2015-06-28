@@ -7,7 +7,6 @@ requirejs.config({
 
 	// please keep in abc order
 	paths: {
-		'codeGen': '../utils/codeGenerator',
 		'globber': '../utils/globber'
 	}
 });
