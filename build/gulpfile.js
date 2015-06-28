@@ -1,8 +1,9 @@
 var exec = require('child_process').exec,
-	del = require('del');
-    eol = require('os').EOL;
+	del = require('del'),
+	fs = require('fs'),
+    eol = require('os').EOL,
 	gulp = require('gulp'),
-    less = require('gulp-less');
+    less = require('gulp-less'),
 	
 	//minifyCSS = require('gulp-minify-css'),
     uglify = require('gulp-uglify');
@@ -35,7 +36,11 @@ gulp.task('prod-copy', function(){
 
 gulp.task('prod-rjs', function(){
 	exec("node r.js -o rjs.build.js", function(err, stdout, stderr) {
-   		if(err) console.log(err);
+		if(err) console.log(err);
+
+		//create the data folder
+		try { fs.mkdirSync('../production/app/data'); }
+		catch(e) { if( e.code != 'EEXIST' ) throw e; }
 
 		// delete less folder
 		del(prodRoot + '/less', {force: true});
