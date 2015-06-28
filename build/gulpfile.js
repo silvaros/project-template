@@ -20,7 +20,7 @@ gulp.task('prod-copy', function(){
 	//.on('error', function(err){ console.log(err); })
 	.pipe(gulp.dest(basePath+'production/app'));
 
-	gulp.src(['app/data', 'app/views/**'], {cwd: basePath })
+	gulp.src(['app/views/**'], {cwd: basePath })
 	//.on('error', function(err){ console.log(err); })
 	.pipe(gulp.dest(basePath+'production/app/views'));
 
