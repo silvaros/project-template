@@ -1,8 +1,9 @@
 // loaded by index.js -> appInit.js
 define([
-	'body-parser', 'express', './config/base'
+	'body-parser', 'express', 'path',
+	'config'
 ],
-function(bodyParser, express, appConfig){
+function(bodyParser, express, path, appConfig){
 	process.env.PORT = appConfig.port || 3001;
 
 	var app = express();
@@ -19,12 +20,18 @@ function(bodyParser, express, appConfig){
 	app.use(bodyParser.json());
 	
 	// Setting the app router and static folder
-	app.use(express.static(require('path').resolve('./public')));
+	app.use(express.static(path.resolve('./public')));
 
 	// server side templating 
 	app.engine('html', require('consolidate')[appConfig.templateEngine]);
 	app.set('view engine', 'jade');
 	app.set('views', appConfig.viewsPath);	
 
+	// register routes
+	var files = globber.get('./app/routes/**/*.js');
+	files.forEach(function(route) {
+		require(path.resolve(route))(app);
+	});
+
 	return app;	
-})
+});

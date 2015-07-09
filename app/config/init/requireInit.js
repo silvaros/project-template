@@ -1,14 +1,16 @@
 var requirejs = require('requirejs');
 
 requirejs.config({
-	baseUrl: './app/',
+	baseUrl: '.',
 	nodeRequire: require,
 	waitSeconds: 0,
 
 	// please keep in abc order
 	paths: {
-		'globber': '../utils/globber'
-	}
+		'appInit': 'app/config/init/appInit',
+		'config': 'app/config/env/base',
+		'expressInit': 'app/config/init/expressInit',
+		'globber': 'utils/globber'
 });
 
 module.exports = requirejs;
