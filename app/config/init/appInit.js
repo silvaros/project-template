@@ -1,6 +1,6 @@
 // loaded first in index.js
 define([
-	'globber', 'path', './expressInit'
+	'globber', 'path', 'expressInit'
 ],
 function( globber, path, app ){
 	// return app from requiring expressInit, 

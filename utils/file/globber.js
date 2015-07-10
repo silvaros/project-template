@@ -25,12 +25,6 @@ function(glob, _ ){
 			}
 		}
 
-		if (removeRoot) {
-			output = output.map(function(file) {
-				return file.replace(removeRoot, '');
-			});
-		}
-
 		return output;
 	}
 

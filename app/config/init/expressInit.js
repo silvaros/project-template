@@ -1,20 +1,22 @@
+'use strict';
+
 // loaded by index.js -> appInit.js
 define([
 	'body-parser', 'express', 'path',
-	'config'
+	'config', 'config-util', 'globber'
 ],
-function(bodyParser, express, path, appConfig){
-	process.env.PORT = appConfig.port || 3001;
+function(bodyParser, express, path, config, configUtil, globber){
+	process.env.PORT = config.port || 3001;
 
 	var app = express();
 
-	app.locals.description = appConfig.description;
-	app.locals.keywords = appConfig.keywords;
-	app.locals.title = appConfig.title;
+	app.locals.description = config.description;
+	app.locals.keywords = config.keywords;
+	app.locals.title = config.title;
 
 	// files the layout html should include
-	app.locals.cssFiles = appConfig.getCSSAssets( appConfig.assets.css );
-	app.locals.jsFiles = appConfig.getJavaScriptAssets( appConfig.assets.js );
+	app.locals.cssFiles = configUtil.getCSSAssets( config.assets.css );
+	app.locals.jsFiles = configUtil.getJavaScriptAssets( config.assets.js );
 
 	app.use(bodyParser.urlencoded({ extended: false }));
 	app.use(bodyParser.json());
@@ -23,9 +25,9 @@ function(bodyParser, express, path, appConfig){
 	app.use(express.static(path.resolve('./public')));
 
 	// server side templating 
-	app.engine('html', require('consolidate')[appConfig.templateEngine]);
+	app.engine('html', require('consolidate')[config.templateEngine]);
 	app.set('view engine', 'jade');
-	app.set('views', appConfig.viewsPath);	
+	app.set('views', config.viewsPath);	
 
 	// register routes
 	var files = globber.get('./app/routes/**/*.js');

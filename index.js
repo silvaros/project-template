@@ -1,7 +1,7 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 // first configure require
-var requirejs = require('./app/requireInit');
+var requirejs = require('./app/config/init/requireInit');
 
 // init app
 requirejs(['appInit'], function(app){

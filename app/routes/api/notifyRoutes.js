@@ -1,5 +1,5 @@
 define([
-	'controllers/notifyMeController'
+	'app/controllers/notifyMeController'
 ],
 function(notifyMeCtlr){
 	return function(app){
