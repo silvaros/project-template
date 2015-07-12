@@ -1,6 +1,5 @@
 'use strict';
 
-// loaded by index.js -> appInit.js
 define([
 	'body-parser', 'express', 'path',
 	'config', 'config-util', 'globber'
