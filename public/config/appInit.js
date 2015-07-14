@@ -3,7 +3,7 @@ require([
     'knockback'
 ], 
 function(ko, kb){
-    window.Gymme = {};
+    window.App = {};
 
     function appendAndApply(html, vm){
         var content = $('section.content');
@@ -52,6 +52,6 @@ function(ko, kb){
         }
     });
 
-    Gymme.Router = new Router();
+    App.Router = new Router();
     Backbone.history.start();
 });
