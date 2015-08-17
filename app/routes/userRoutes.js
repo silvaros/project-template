@@ -1,7 +1,7 @@
 define([
 	
 ],
-function(codeGen){
+function(){
 	return function(app){
 		
 	}
