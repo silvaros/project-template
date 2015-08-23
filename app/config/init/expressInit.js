@@ -25,13 +25,18 @@ function(bodyParser, express, path, config, configUtil, globber){
 
 	// server side templating 
 	app.engine('html', require('consolidate')[config.templateEngine]);
-	app.set('view engine', 'jade');
+	app.set('view engine', 'html');
 	app.set('views', config.viewsPath);	
 
 	// register routes
 	var files = globber.get('./app/routes/**/*.js');
 	files.forEach(function(route) {
 		require(path.resolve(route))(app);
+	});
+
+	// this should always be the last route for a single page app.
+	app.route('/*').get(function(req, res) {
+	    res.render('index');
 	});
 
 	return app;	

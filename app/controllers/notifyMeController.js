@@ -1,3 +1,5 @@
+'use strict';
+
 define([
 	'fs', 'path', 'os', 'underscore'
 ], 

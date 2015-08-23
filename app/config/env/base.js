@@ -1,3 +1,5 @@
+'use strict';
+
 define([
 	'underscore',
 	 process.env.NODE_ENV + '-config'	//environment config only needs "development" atm
@@ -7,6 +9,6 @@ function(_, envConfig ){
 		title: 'New Project Title', 
 		description: '',
 		keywords: '',
-		templateEngine: 'jade'
+		templateEngine: 'swig'
 	}, envConfig || {});
 });

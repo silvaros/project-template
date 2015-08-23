@@ -1,3 +1,5 @@
+'use strict';
+
 define(function(){
  	return { 
  		port: 3000,
@@ -7,7 +9,11 @@ define(function(){
 				// for things not loaded by require on the client
 				'public/lib/requirejs/require.js',
 				'public/config/requireInit.js',
-				'public/config/appInit.js'
+				'public/config/appInit.js',
+
+				// jquery before bootstrap
+				'public/lib/jquery/dist/jquery.js',
+				'public/bootstrap/dist/js/bootstrap.js'
 			],
 			tests: [
 				'public/modules/*/tests/*.js'

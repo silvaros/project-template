@@ -4,7 +4,7 @@ define([
 ], 
 function(Backbone, ko){
     function appendAndApply(html, vm, node){
-        var content = $(node).length > 0 ? $(node): $('section.content');
+        var content = $(node).length > 0 ? $(node): $('section.app-content');
 
         ko.cleanNode( content[0] );
         content.empty();        

@@ -5,8 +5,19 @@ html, body {
 	background: @body-bg;
 }
 
-section {
-	&.content {
-		height: inherit;
+.app-container {
+	background-color: white; 
+	height: inherit;
+	display: flex;
+ 	flex-direction: column;		
+	
+	section {
+		&.app-header {
+			text-align: center;
+		}
+		
+		&.app-content {
+			margin: auto;
+		}
 	}
 }
