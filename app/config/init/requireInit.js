@@ -11,7 +11,7 @@ requirejs.config({
 	paths: {
 		'appInit': 'app/config/init/appInit',
 		'config': 'app/config/env/base',
-		'config-util': 'utils/file/config-util',
+		'config-util': 'utils/file/config',
 		'development-config': 'app/config/env/development',
 		'expressInit': 'app/config/init/expressInit',
 		'globber': 'utils/file/globber',
