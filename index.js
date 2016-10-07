@@ -4,10 +4,18 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var requirejs = require('./app/config/init/requireInit');
 
 // init app
-requirejs(['appInit'], function(app){
-	var PORT = process.env.PORT || 3001;
-	app.listen(PORT);
-	console.log('server started on port %s', PORT);	
+requirejs([	
+	'appInit',
+	'http',
+	'socket.io'
+], function(app){
+	const port = process.env.PORT || app.config.port || 3001;
+	const server = http.createServer(app);
+  	//var socket = io.listen(server);
+
+  	server.listen(port, function() { 
+		console.log('Server started on port %s', port);
+	});
 });
 
 
