@@ -1,0 +1,52 @@
+
+/* confine this bootstrap override to here for now */
+.dropdown-menu {
+	background-color: @brand-color-1;
+	border: none;
+	border-radius: 0;
+	color: @color-white;
+	.flex-1;
+	font-size: 18px;
+	margin: 0;
+	white-space: nowrap;
+
+	li {
+		cursor: pointer;
+		.flex;
+		padding: 10px;
+
+		&:hover {
+			background-color: @brand-color-2;
+		}
+
+		i {
+			margin: auto 10px auto 5px;
+			color: @color-white;
+		}
+
+		span {
+		    margin: auto 0;
+		    
+			font-size: @font-size-medium;
+			@media (max-width: @media-max-width-value) {
+                font-size: @font-size-small;
+            }
+		}
+	}	
+}
+
+.dropdown-toggle {
+	background-color: @brand-color-1;
+	cursor: pointer;
+	.flex;
+	
+	&:hover {
+		background-color: @brand-color-2;	
+	}
+
+	i {
+		color:@color-white;
+		padding: 10px;
+		text-decoration: none;
+	}
+}

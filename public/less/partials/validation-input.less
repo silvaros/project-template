@@ -1,19 +1,28 @@
 .validation-input {
-	/*  this often used with alerts, which set display: none, 
-		but we want input validation to be non-obtrusive, so we use visibility instead */
-	.alert {
-		display: block;
-		visibility: hidden;	
+	display: flex;
+    flex-direction: column;
+
+    .validation-input-top {
+    	display: flex;
+
+    	label {
+    		border-radius: 4px 4px 0 0;
+    	}
+    }
+
+	.validation-input-bottom {
+	   	margin-bottom: 10px;
+
+	   	input {
+    		border-radius: 0 4px 4px 4px;
+            margin: 0;
+            cursor: text;
+    	}
 	}
-	
-	&.error {
-		input {
-			border: 1px solid @page-notify-alert-error-font-color;
-		}
-		
-		.alert {
-			visibility: visible;
-			color: @page-notify-alert-error-font-color;
-		}
-	}
+
+    &.no-label {
+        .validation-input-bottom {
+            margin: 0;
+        }   
+    }
 }

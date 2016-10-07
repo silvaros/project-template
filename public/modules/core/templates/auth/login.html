@@ -1,0 +1,36 @@
+<script type="text/html" id="login-page">
+    <div class="page-login">
+        <div class="login-form">
+            <div class="login-top-message">Welcome Back!</div>
+
+            <div class='validation-input'>
+                <div class="validation-input-top">
+                    <label class="brand">User Name</label>
+                    <div data-bind="valid: { selector: 'userName', type: 'label' }"></div>
+                </div>
+               
+                <div class="validation-input-bottom">
+                    <input type="text" class="form-control" data-bind="valid: 'userName', value: userName" />
+                </div>
+            </div>
+            
+            <div class='validation-input'>
+                <div class="validation-input-top">
+                    <label class="brand">Password</label>
+                    <div data-bind="valid: { selector: 'password', type: 'label' }"></div>
+                </div>
+                
+                <div class="validation-input-bottom">
+                    <input type="password"class="form-control" data-bind="valid: 'password', value: password, 
+                        event: { keyup: function(vm, e){ if(e.keyCode == 13){ $data.onLoginClick(); }}}" />
+                </div>
+            </div>
+
+            <div class="flex"> 
+                <a class="redirect-link" data-bind="click: App.goToFn('signup')">I Can't Remember</a>
+                <div class="login-alert" data-bind="valid: { type: 'label' }"></div>
+                <button class="btn btn-primary" data-bind="click: onLoginClick">Login</button>
+            </div>
+        </div>   
+    </div>
+</script>

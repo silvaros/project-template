@@ -1,0 +1,45 @@
+@signup-container-border: 5px solid @default-border-color;
+
+@signup-message-text-font-variant: small-caps;
+@signup-message-text-font-family: serif;
+
+.page-signup {
+	background: @signup-background-image-wide no-repeat center center fixed;
+	@media (max-width: @media-max-width-value) {
+		background-image: @signup-background-image-tall;
+	}
+	background-size: 100% 100%;
+	.flex-1;
+	padding: 0 15px;
+	
+	.signup-container {
+		background-color: @rgba-heavy-light-gray;
+		border-radius: @default-border-radius;
+		margin: 30px auto;
+        max-width: 500px;
+		padding: 20px;
+	
+		@media (max-width: @media-max-width-value) {
+			padding: 10px;
+		}
+
+		.signup-top-message {
+			font-variant: @signup-message-text-font-variant;
+			font-family: @signup-message-text-font-family;
+			.font-size-largest;
+
+			line-height: 50px;
+			text-align: center;
+			margin-bottom: 10px;	
+
+			@media (max-width: @media-max-width-value) {
+				line-height: initial;
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.error-msg {
+		margin: auto 5px;
+	}
+}

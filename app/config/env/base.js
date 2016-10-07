@@ -2,7 +2,7 @@
 
 define([
 	'underscore',
-	 process.env.NODE_ENV + '-config'	//environment config only needs "development" atm
+	 (process.env.NODE_ENV || 'development')+ '-config'	//environment config only needs "development" atm
 ],
 function(_, envConfig ){
 	return _.extend({

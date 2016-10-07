@@ -1,0 +1,51 @@
+<script type="text/html" id="signup-page">
+	<div class="page-signup">
+		<div class="signup-container">
+			<div class="signup-top-message">Join the Party, <br> Sign Up Below </div>
+
+			<form>	
+	            <div class='validation-input userName'>
+	                <div class="validation-input-top">
+	                    <label class="brand">User Name</label>
+	                    <div data-bind="valid: { selector: 'userName', type: 'label' }"></div>
+	                </div>
+	               
+	                <div class="validation-input-bottom">
+	                    <input type="text" class="form-control" data-bind="valid: 'userName', value: userName" />
+	                </div>
+	            </div>
+
+	            <div class="validation-input email">
+	                <div class="validation-input-top">
+	                    <label class="brand">Email</label>
+	                    <div data-bind="valid: { selector: 'email', type: 'label' }"></div>
+	                </div>
+	               
+	                <div class="validation-input-bottom">
+	                    <input type="text" class="form-control" data-bind="valid: 'email', value: email" />
+	                </div>
+	            </div>
+			
+				<div class='validation-input password'>
+	                <div class="validation-input-top">
+	                    <label class="brand">Password</label>
+	                    <div data-bind="valid: { selector: 'password', type: 'label' }"></div>
+	                </div>
+	               
+	                <div class="validation-input-bottom">
+	                    <input type="password" class="form-control" data-bind="valid: 'password', value: password, 
+	                    	event: { keyup: function(vm, e){ if(e.keyCode == 13){ $data.onSignupClick(); }}}" />
+	                </div>
+	            </div>
+	     	</form>
+
+	     	<div class="error-msg alert" data-bind="valid: { type: 'label' }"></div>
+            
+            <div class="flex"> 
+                <a class="redirect-link" data-bind="click: App.goToFn('login')">Need to Login instead?</a>
+                
+                <button type="button" class="btn btn-primary" data-bind='click: onSignupClick.bind($data)'>Sign Up</button>  
+            </div>
+		</div>
+	</div>
+</script>

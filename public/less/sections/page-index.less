@@ -1,0 +1,104 @@
+.page-index {
+	background: @index-background-image-wide no-repeat center center fixed;
+	@media (max-width: @media-max-width-value) {
+		background-image: @index-background-image-tall;
+	}
+	background-size: 100% 100%;
+	overflow: auto;
+
+	.index-propaganda-headline {
+		.flex;
+		padding: 20px;
+		background-color: @rgba-medium-steel-blue;
+		font-size: @font-size-large;
+		@media (max-width: @media-max-width-value) {
+            font-size: @font-size-medium;
+        }
+		
+		span {
+			margin: auto;
+		}
+	}
+	
+	.index-propaganda-message {
+		padding: 20px;
+	    margin: 0 20%;
+
+		@media (max-width: @media-max-width-value) {
+			margin: 0 5%;
+		}
+
+		.index-propganda-message-header { 
+			font-size: @font-size-larger;
+	    	@media (max-width: @media-max-width-value) {
+				font-size: @font-size-large;
+			}	
+
+		    text-align: center;
+		    padding: 5px;
+		    color: @brand-color-1;
+		    font-weight: bold;
+		    background-color: @rgba-medium-white;
+		    border-radius: @default-border-radius;
+	    	margin-bottom: 10px;
+		}	
+		
+		
+		.index-propaganda-bottom {
+			.flex;
+			
+			margin-top: 35px;
+			@media (max-width: @media-max-width-value) {
+				margin-top: 15px;
+			}
+			
+			.bullet-list-header {
+				color: @brand-color-1;
+				background-color: @rgba-medium-white;
+				border-radius: @default-border-radius;
+				.font-size-larger;
+				text-align: center;
+				padding: 5px;
+			}
+
+			/* bullet point override */
+			ul {
+				list-style: none;
+				padding: 0;
+				
+				li {
+				    padding-left: 20px;
+				    margin-bottom: 10px;
+					@media (max-width: @media-max-width-value) {
+						margin-bottom: 5px;
+					}
+
+					&.stream:before { content: "\f289";}
+					&.disc:before { content: "\f192"; }
+					&.organize:before { content: "\f0e8";}
+					&.cash:before { content: "\f0d6";}
+
+					&:before {
+					    font-family: FontAwesome;
+					    display: inline-block;
+					    margin-left: -20px; /* same as padding-left set on li */
+					    width: 40px; /* same as padding-left set on li */
+					    font-size: @font-size-larger;
+					    position: relative;
+					    top: 3px;  
+					}
+				}
+			}
+
+			.index-signup-button {
+				border-radius: 4px;
+				.font-size-large;
+				margin: 0px auto auto 20px;
+			    padding: 20px;
+			    @media (max-width: @media-max-width-value) {
+					padding: 20px 10px;
+				}
+			}
+		}
+	}
+}

@@ -14,10 +14,11 @@ function( _, globber){
 				output = _.union(output, globber.get(this.assets.tests));
 			}
 
+
 			output = output.map(function(file) {
-				return file.replace('public/', '');
+				return file.replace('public', '');
 			});
-			
+		
 			return output;
 		},
 
@@ -25,7 +26,7 @@ function( _, globber){
 			var output = globber.get(cssFiles);
 
 			output = output.map(function(file) {
-				return file.replace('public/', '');
+				return file.replace('public', '');
 			});
 			
 			return output;

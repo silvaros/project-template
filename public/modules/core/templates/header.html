@@ -1,0 +1,61 @@
+ <script type="text/html" id='app-header'>
+    <div class="app-header-container">
+        <div class="header-left">
+            <a class="brand" data-bind="click: App.goToFn('/')">LoanStar<i class="fa fa-star-o" /></a>
+
+        </div>	
+
+        <div class="header-middle"></div>
+        
+        <div class="header-right">
+			<!-- ko ifnot: App.User.isAuthorized() -->
+	        <span class="header-auth-links">
+				<a data-bind="click: App.goToFn('signup')">Signup</a> | <a data-bind="click: App.goToFn('login')">Login</a>
+			</span>
+			<!-- /ko -->
+
+	        <!-- ko if: App.User.isAuthorized() -->
+        	
+        	<!-- ko if: App.User.isVerified() -->
+	    	<i title="Search" title="Search" class="fa fa-search" data-bind="click: App.goToFn('/search')"></i>
+	    	<!-- /ko -->
+
+		    <div class="user-name" data-bind="css: { 'pull-right': !App.User.isVerified() }, click: App.goToFn('')">
+        		<span data-bind="text: userName"></span>	
+		    	<i title="My Content" class="fa fa-user"></i>
+		    	
+        	</div>
+
+        	<div class="dropdown menu-container">
+	        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+		            <i title="Menu" class="fa fa-bars menu-item-icon"></i>
+		      	</a>
+
+		        <ul class="dropdown-menu pull-right">
+		            <!-- ko if: App.User.isVerified() -->
+		            <li data-bind="click: App.goToFn('users')">
+		                <i title="Lenders" class="fa fa-group"></i>
+		                <span class="menu-item-text">Neighbors</span>
+		            </li>
+
+		            <li data-bind="click: App.goToFn('')">
+		                <i title="My Content" class="fa fa-list"></i>
+		                <span class="menu-item-text">Collections</span>
+		            </li>
+		            <li data-bind="click: App.goToFn('settings')">
+		                <i title="Settings" class="fa fa-cog"></i>
+		                <span class="menu-item-text">Settings</span>
+		            </li>
+		            <!-- /ko -->
+		            <li data-bind="click: onLogoutClick">
+		                <i title="Logout" class="fa fa-sign-out"></i>
+		                <span class="menu-item-text">Logout</span>
+		            </li>
+		        </ul>
+	        </div>
+       		<!-- /ko -->
+        </div>
+</script>
+
+
+

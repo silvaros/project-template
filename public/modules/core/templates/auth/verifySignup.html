@@ -1,0 +1,78 @@
+<script type="text/html" id="verify-signup">
+	<div class="page-verify-signup">
+		<div class="verify-signup-container">
+			<!-- ko template: templateToShow() --><!-- /ko -->
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="verify-created">
+	<div class="created-message">
+		<h3>Welcome! Thanks for signing up.</h3>
+		<br/>
+		<span>To access the site please verify your account. Check the email address you used to sign up for your verification link. Don't forget to check the spam folder!</span>
+		<br/>
+		<br/>
+		
+		<!-- ko if: App.User.isAuthorized() -->
+		<h4><span>Once you have verified your email you can <a data-bind="click: onGetStartedClick">get started</a>!</span></h4>
+		<!-- /ko -->
+
+        <!-- ko ifnot: App.User.isAuthorized() -->
+		<h4><span>Once you have verified your email you can hit the <a data-bind="click: App.goToFn('login')">login page</a>!</span></h4>
+        <!-- /ko -->
+	</div>
+	
+	<div class="or-text">OR</div>
+	<!-- ko template: 'verify-resend' --><!-- /ko -->
+</script>
+
+<script type="text/html" id="verify-success">
+	<div class="success-message">Congrats, your account has been verified.<br>You may close this 	window or <a data-bind="click: App.goToFn('login')">login</a>.
+	</div>
+</script>
+
+<script type="text/html" id="verify-error">
+	<div class="error-message">An error occured: <!-- ko text:verifyMessage --><!-- /ko --></div>
+	<!-- TODO: fix this magic string hack properly -->
+	<br>
+	<!-- ko if: _.isEqual(verifyMessage(), "Failed to find that verification token") || _.isEqual(verifyMessage(), "The verification token has expired") -->
+		<!-- ko template: 'verify-resend' --><!-- /ko -->
+	<!-- /ko -->
+	
+	<!-- ko if: _.isEqual(verifyMessage(), "User linked to token is already verified")-->
+		<!-- ko if: App.User.isAuthorized() -->
+		<h4><span>It looks like you have already verified your email. <br><br> Head over to <a data-bind="click: onGetStartedClick">your profile</a>!</span></h4>
+		<!-- /ko -->
+
+        <!-- ko ifnot: App.User.isAuthorized() -->
+		<h4><span>It looks like you have already verified your email. <br><br> Head over to the <a data-bind="click: App.goToFn('login')">login page</a>!</span></h4>
+        <!-- /ko -->
+	<!-- /ko -->
+</script>
+
+<script type="text/html" id="verify-loading">
+	<div class="loading-message">Processing your token, sit tight..</div>
+</script>
+
+<script type="text/html" id="verify-resend">
+	<span>If you need to request a new verification link, enter your user name below.</span>
+	<div class="resend-token-container">
+		<div class='validation-input'>
+            <div class="validation-input-top">
+                <label class="brand">User Name</label>
+                <div data-bind="valid: { selector: 'resend', type: 'label' }"></div>
+            </div>
+            
+            <div class="validation-input-bottom">
+                <input class="form-control" data-bind="valid: 'resend', value: requestNewTokenValue" />
+            </div>
+        </div>
+
+        <div class="flex"> 
+            <a class="redirect-link"></a>
+            <div class="flex-1"></div>
+            <button class="btn btn-primary new-link-button" data-bind="click: onRequestNewTokenClick">New Link Please</button>
+        </div>
+	</div>
+</script>

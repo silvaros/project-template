@@ -1,0 +1,36 @@
+.page-verify-signup {
+	color: @color-black;
+	flex: 1;
+	margin: 0 20%;
+	padding: 10px;
+	text-align: center;
+
+	.verify-signup-container {
+		margin-top: 20px;
+	}
+
+	.or-text { margin: 20px 0 10px; font-size: @font-size-large; }
+	
+	.resend-token-container {
+		text-align: left;
+		margin-top: 20px;
+
+		button {
+			width: initial;
+			
+			@media (max-width: @media-max-width-value) {
+				margin-top: 5px;
+				margin-left: 0px;
+		    }
+		} 
+	}
+
+	.error-message {
+		color: red;
+		font-size: @font-size-large;
+	}
+
+	.success-message {
+		font-size: @font-size-large;
+	}
+}
