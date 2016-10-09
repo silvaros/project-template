@@ -1,0 +1,42 @@
+<script type="text/html" id="edit-save-input">
+	<!-- TODO: change styles to be independant -->
+	 <div class='validation-input' data-bind="css: { 'no-label': label === '' }">
+        <div class="validation-input-top">
+			<!-- ko if: label !== '' -->
+			<label class="brand with-addon" data-bind="text:label"></label>
+			<!-- /ko -->
+			<div data-bind="valid: { selector: labelValidation, type: 'label' }"></div>       
+        </div> 
+		<div class="validation-input-bottom">
+		 	<input type="input" class="form-control" data-bind="
+		 		hasFocus: true, 
+		 		valueUpdate:'keyup', 
+		 		valid: inputValidation, 
+		 		attr: {placeholder: inputValidation, type: editing() ? 'input' : type, disabled: !editing()},
+		 		value: value" />
+			
+			<!-- ko if: canEdit() -->
+			<!-- ko if: editing() === false -->
+			<button type="button" title="Edit" class="btn brand" data-bind="click:onEditClick">
+		   		<i class="fa fa-pencil"></i>
+		    </button>
+		    <!-- /ko -->
+		
+			<!-- ko if: editing() === true -->
+			<button type="button" title="Save" class="btn btn-success" data-bind="click: onSaveClick">
+		    	<i class="fa fa-floppy-o"></i>
+		    </button>
+		    <button type="button" title="Cancel" class="btn btn-danger" data-bind="click: onCancelEditClick">
+		    	<i class="fa fa-times"></i>
+		    </button>
+			<!-- /ko -->
+			<!-- /ko -->
+
+			<!-- ko if: $data.delete && !editing() -->
+		    <button type="button" title="Delete" class="btn btn-danger" data-bind="click: onDeleteClick">
+		    	<i class="fa fa-trash-o"></i>
+		    </button>
+		    <!-- /ko -->	    
+	    </div>
+	</div>	
+</script>

@@ -1,15 +1,37 @@
-use strict';
+'use strict';
 
 define([
-	'body-parser', 'cookie-parser', 'connect-mongo', 'express', 'express-session', 'mongoose', 'path', 'passport',
+	'body-parser', 'cookie-parser', 'connect-mongo', 'consolidate', 'express', 'express-session', 'mongoose', 'path', 'passport',
 	// local modeules
 	'config', 'globber', 'app/controllers/passportController'
 ],
-function(bodyParser, cookieParser, connectMongo, express, session, mongoose, path, passport, 
+function(bodyParser, cookieParser, connectMongo, consolidate, express, session, mongoose, path, passport, 
 		 config, globber, passportController)
 {
 	var app = express();
 	app.config = config;
+	
+	// CookieParser should be above session
+	app.use(cookieParser());
+	app.use(bodyParser.urlencoded({ extended: false }));
+	app.use(bodyParser.json());
+
+	// static folders
+	app.use(express.static('public'));
+	app.use('/utils', express.static('utils'));
+
+	// Setting the app router and static folder
+	app.use(express.static(path.resolve('./public')));
+	// server side templating 
+	app.engine('html', consolidate.swig);
+	app.set('view engine', 'html');
+	app.set('views','./app/views');	
+
+	// load models before routes
+	globber.get('./app/models/**/*.js').forEach(function(modelPath) {
+		require(path.resolve(modelPath));
+	});
+
 	
 	// Setup mongo session, connection	
 	var	mongoStore = connectMongo(session);
@@ -21,14 +43,7 @@ function(bodyParser, cookieParser, connectMongo, express, session, mongoose, pat
 			return;
 		}
 
-		// load models before routes
-		globber.get('./app/models/**/*.js').forEach(function(modelPath) {
-			require(path.resolve(modelPath));
-		});
-
-		// CookieParser should be above session
-		app.use(cookieParser());
-
+	
 		app.use(session({
 			saveUninitialized: true,
 			resave: false,

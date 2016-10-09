@@ -1,0 +1,16 @@
+<script type="text/html" id="video-player">
+	<video controls data-bind="event: { 'contextmenu': function(e){ return false; }}">
+		<source data-bind="attr: { src: getVideoUrl() }" type="video/mp4">
+		<source data-bind="attr: { src: getVideoUrl() }" type="video/ogg">
+		<source data-bind="attr: { src: getVideoUrl() }" type="video/webm">
+	</video>
+
+	<!-- ko with: videoState() -->
+	<div class="indicator" data-bind="click: click, css: cls">	
+		<div class="indicator-text">
+			<i data-bind="css: icon"></i>
+			<!-- ko text: text --><!-- /ko -->
+		</div>
+	</div>
+	<!-- /ko -->
+</script>

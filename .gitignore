@@ -11,3 +11,4 @@ data/
 common/init.js
 public/css/app.css
 production/
+startup.bat

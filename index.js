@@ -8,7 +8,7 @@ requirejs([
 	'appInit',
 	'http',
 	'socket.io'
-], function(app){
+], function(app, http, io){
 	const port = process.env.PORT || app.config.port || 3001;
 	const server = http.createServer(app);
   	//var socket = io.listen(server);

@@ -1,0 +1,50 @@
+<script type="text/html" id="search-page">
+	<div class="page-search">
+        <div class='validation-input search-term'>
+            <div class="validation-input-top">
+                <label class="brand">Search by Name</label>
+                <div data-bind="valid: { selector: 'term', type: 'label' }"></div>
+            </div>
+           
+            <div class="validation-input-bottom">
+                <input type="text" class="form-control" data-bind="valid: 'term', value: term" />
+            </div>
+
+            <button class="brand btn" data-bind="click: onSeachClick">Search</button>
+        </div>
+		
+		<ul class="nav nav-tabs" role="tablist">
+		  <li role="presentation" data-bind="click: onSearchTypeClick.bind($data, SearchTypeEnum.Files), css:{ active: selectedSearchType() === SearchTypeEnum.Files }">
+		  	<a href="#">Files <span class="badge" data-bind="visible: filesResults().length > 0, text: filesResults().length"></span></a>
+		  </li>
+		  <li role="presentation" data-bind="click: onSearchTypeClick.bind($data, SearchTypeEnum.Collections), css:{ active: selectedSearchType() === SearchTypeEnum.Collections }">
+		  	<a href="#">Collections <span class="badge" data-bind="visible: collectionsResults().length > 0, text: collectionsResults().length"></span></a>
+		  </li>
+<!--		 	 
+		  <li role="presentation" data-bind="click: onSearchTypeClick.bind($data, SearchTypeEnum.Dirs), css:{ active: selectedSearchType() === SearchTypeEnum.Dirs }" >
+		  	<a href="#">Dirs <span class="badge" data-bind="visible: dirsResults().length > 0, text: dirsResults().length"></span></a>
+		  </li>
+		  <li role="presentation" data-bind="click: onSearchTypeClick.bind($data, SearchTypeEnum.Tags), css:{ active: selectedSearchType() === SearchTypeEnum.Tags }" >
+		  	<a href="#">Tags <span class="badge" data-bind="visible: tagsResults().length > 0, text: tagsResults().length"></span></a>
+		  </li>
+-->		  
+		</ul>
+		
+		<div class="content-collection-container">
+			<ul data-bind="visible: selectedSearchType() === SearchTypeEnum.Files, foreach: filesResults()">
+				<!-- ko template: 'content-item' --><!-- /ko -->
+			</ul>
+
+			<ul data-bind="visible: selectedSearchType() === SearchTypeEnum.Collections, foreach: collectionsResults()">
+				<!-- ko template: 'content-item' --><!-- /ko -->
+			</ul>
+			
+			<div data-bind="visible: activeSearchTypeList().length === 0" class="no-results">No Results</div>
+
+		</div>
+
+		<!-- ko if: selectedFile() && showFileOverlay() -->
+			<file-overlay params="file: selectedFile(), show: showFileOverlay"></file-overlay>
+		<!-- /ko -->
+    </div>   
+</script>

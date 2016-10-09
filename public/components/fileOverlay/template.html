@@ -1,0 +1,67 @@
+<script type="text/html" id="file-overlay">
+	<div class='file-overlay'>
+		<div class="top-bar">
+			<div class="left">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">
+		            <i title="Flag" class="fa fa-flag"></i>
+		      	</a>
+		      	<ul class="dropdown-menu pull-left">
+		            <li data-bind="">
+		                <i title="Broken" class="fa fa-chain-broken"></i>
+		                <span class="menu-item-text">Doesn't work</span>
+		            </li>
+
+		            <li data-bind="">
+		                <i title="Bad Name" class="fa fa-list"></i>
+		                <span class="menu-item-text">Wrong Name</span>
+		            </li>
+		        </ul>
+			</div>
+			<div class="center">
+				<div class="file-name" data-bind="text: name"></div>
+			</div>
+			<div class="right">
+				<i class="fa fa-close" title="Close" data-bind="click: onCloseClick.bind($data)"></i>
+			</div>		
+		</div>
+		
+		<div class="bottom-bar" data-bind="visible: !isDir">
+			<div class="stateButton" data-bind="click: setOverlayState.bind($data, OverlayStates.Play), css: { selected: overlayState() === OverlayStates.Play }">
+				<i class="fa fa-video-camera" data-bind=""></i>
+				<span> File</span>
+			</div>
+			<div class="stateButton" data-bind="css: { selected: overlayState() === OverlayStates.Info }, click: setOverlayState.bind($data, OverlayStates.Info)">
+				<i class="fa fa-info" data-bind=""></i> 
+				<span>Info</span>
+			</div>
+			<div class="stateButton" data-bind="css: { selected: overlayState() === OverlayStates.Tags }, click: setOverlayState.bind($data, OverlayStates.Tags)">
+				<i class="fa fa-tag" data-bind=""></i> 
+				<span>Tags</span>
+			</div>	
+		</div>
+		
+		<div class="content" data-bind="foreach: _.keys(OverlayStates)">
+			<!-- ko template: {name: $parent.OverlayStates[$data], data: $parent}--><!-- /ko -->
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="file-info">
+	<file-info class="flex flex-1" params="file: file" data-bind="visible: overlayState() == OverlayStates.Info"></file-info> 
+</script>
+
+<script type="text/html" id="file-player">
+	<video-player class="video-player" params="file: file" data-bind="visible: overlayState() === OverlayStates.Play"></video-player>
+</script>
+
+<script type="text/html" id="file-tags">
+	<div class="file-tags" data-bind="visible: overlayState() === OverlayStates.Tags">
+		FILE TAGS
+	</div>
+</script>
+
+<script type="text/html" id="file-dir">
+	<div class="file-dir" data-bind="visible: overlayState() === OverlayStates.Dir">
+		FILE Dir
+	</div>
+</script>

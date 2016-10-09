@@ -1,0 +1,32 @@
+<script type="text/html" id="content-item-card">
+	<!-- ko ifnot: skipDisplay() -->
+	<div class="content-item-card" data-bind="css: rootCSS(),
+		click: isDir() ? $root.onDirClick.bind($root) : $root.onFileClick.bind($root)">
+		<div class="name" data-bind="text: name"></div>
+
+		<!-- ko if: !isDir() && isLocked() -->
+		<i title="File Is Locked While In Use" class="fa fa-lock"></i>
+		<!-- /ko -->
+
+		<!-- ko if: isDir() -->
+		<i data-bind="css: { 'fa-folder-o': collapsed(), 'fa-folder-open-o': !collapsed() }" class="fa"></i>
+		<!-- /ko -->
+
+		<!-- ko if: showContentItems() -->
+		<ul data-bind="css: {expanded: !collapsed()}">
+		<!-- ko foreach: contentItems -->
+			<content-item-card params="contentItem: $data, selectedFile: $root.selectedFile"></content-item-card>
+		<!-- /ko -->
+		</ul>
+		<!-- /ko -->
+	</div>
+	<!-- /ko -->
+
+	<!-- ko if: skipDisplay() -->	
+		<!-- ko foreach: contentItems -->
+			<content-item-card params="contentItem: $data, selectedFile: $root.selectedFile"></content-item-card>
+		<!-- /ko -->
+	<!-- /ko -->
+
+	
+</script>

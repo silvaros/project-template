@@ -9,8 +9,7 @@ function(settingsCtlr, AuthCtlr){
 
 	return function(app){
 		app.route('/api/settings')
-		.get( checkLogin, settingsCtlr.getUserSettings )
-		.patch( checkLogin, settingsCtlr.patchUserSetting );
+		.get( checkLogin, settingsCtlr.getUserSettings );
 
 		return app;
 	}

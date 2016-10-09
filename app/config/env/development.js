@@ -53,6 +53,7 @@ define(function(){
 			// }
 		},
 		mailer: {
+			// NOTE: this must be set for the system to send emails.
 			from: process.env.MAILER_FROM || 'email@outlook.com',
 			options: {
 				host: 'smtp-mail.outlook.com',

@@ -24,33 +24,6 @@ function( _ ,config, async, fs, path, mongoose, nsUtil, cryptoUtil, errorsCtlr, 
 
 				return res.status(200).json(returnData);
 			});
-		},
-
-
-		patchUserSetting: function(req, res, callback){
-			var config = req.body;
-			//TODO: design a better workflow for this
-			if(config.password){
-				config = { password: cryptoUtil.encrypt(req.body.password) };
-			}
-			
-			// save to server database 
-			UserModel.findOneAndUpdate({ userName: req.user.userName }, config, {new: true}, function(err, data){
-		 		if(err){
-					res.status(400).json( responseCtlr.createErrorResponse( errorsCtlr.getValidation(err)) );
-					// for waterfall
-					if(callback) callback(err);
-					return;
-				}
-
-				var returnData = data.$toObject();	
-				res.status(200).json(returnData.settings);
-
-				// for waterfall
-				if(callback) callback(null, returnData.settings);
-				
-				return;
-			});
 		}
 	}
 });

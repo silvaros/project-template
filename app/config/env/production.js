@@ -20,9 +20,9 @@ define(function(){
 			]
 		},
 		db: {
-			path: 'mongodb://localhost/<projectName>',
+			path: 'mongodb://localhost/projectName-prod',
 			sessionSecret: 'MEAN',
-			sessionCollection: '<sessionName>'
+			sessionCollection: 'sessionName'
 		},
 	
 		auth: {

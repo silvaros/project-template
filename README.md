@@ -9,5 +9,12 @@ npm install
 bower install
 
 
-- to build production environment; produces <root>/production
+-- to build less
+	cd ./build
+	start gulp wless
+
+-- to build production environment; produces <root>/production
 	gulp prod
+
+
+
