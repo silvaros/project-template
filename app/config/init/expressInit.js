@@ -11,21 +11,13 @@ function(bodyParser, cookieParser, connectMongo, consolidate, express, session, 
 	var app = express();
 	app.config = config;
 	
-	// CookieParser should be above session
-	app.use(cookieParser());
-	app.use(bodyParser.urlencoded({ extended: false }));
-	app.use(bodyParser.json());
-
-	// static folders
-	app.use(express.static('public'));
-	app.use('/utils', express.static('utils'));
-
-	// Setting the app router and static folder
-	app.use(express.static(path.resolve('./public')));
 	// server side templating 
 	app.engine('html', consolidate.swig);
 	app.set('view engine', 'html');
 	app.set('views','./app/views');	
+
+	app.use(bodyParser.urlencoded({ extended: false }));
+	app.use(bodyParser.json());
 
 	// load models before routes
 	globber.get('./app/models/**/*.js').forEach(function(modelPath) {
@@ -43,7 +35,9 @@ function(bodyParser, cookieParser, connectMongo, consolidate, express, session, 
 			return;
 		}
 
-	
+		// CookieParser should be above session
+		app.use(cookieParser());
+		
 		app.use(session({
 			saveUninitialized: true,
 			resave: false,
@@ -58,6 +52,10 @@ function(bodyParser, cookieParser, connectMongo, consolidate, express, session, 
 	    // passport middleware before routes
 		app.use(passport.initialize());
 		app.use(passport.session());
+
+		// static folders
+		app.use('/', express.static('public'));
+		app.use('/utils', express.static('utils'));
 
 		// load routes 
 		var files = globber.get('./app/routes/**/*.js');
