@@ -1,8 +1,8 @@
 {
   "name": "project-template",
   "description": "",
-  "version": "0.0.1",
-  "author": "author",
+  "version": "0.2.0",
+  "author": "Jake Knitter",
   "engines": {
     "node": "6.6.0",
     "npm": "3.8.6"
