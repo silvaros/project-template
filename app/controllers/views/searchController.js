@@ -2,8 +2,8 @@
 
 define([
 	'underscore', 
-	'../../public/enums/searchTypeEnum',
-	'../../public/enums/socketMessageEnum'
+	'public/enums/searchTypeEnum',
+	'public/enums/socketMessageEnum'
 ],
 function( _, SearchTypeEnum, smEnum){
 	return {

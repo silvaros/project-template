@@ -1,7 +1,7 @@
 'use strict';
 
 define([
-	'app/controllers/searchController',
+	'app/controllers/views/searchController',
 	'app/controllers/user/userAuthorizationController'	
 ],
 function(SearchCtlr, AuthCtlr){

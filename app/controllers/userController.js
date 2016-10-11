@@ -3,7 +3,7 @@
 define([
 	'underscore',
 
-	'../../public/enums/socketMessageEnum',
+	'public/enums/socketMessageEnum',
 
 	'./user/userAuthenticationController',
 	'./user/userAuthorizationController',

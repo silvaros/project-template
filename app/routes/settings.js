@@ -1,7 +1,7 @@
 'use strict';
 
 define([
-	'app/controllers/settingsController',
+	'app/controllers/views/settingsController',
 	'app/controllers/user/userAuthorizationController'
 ],
 function(settingsCtlr, AuthCtlr){

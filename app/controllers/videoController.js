@@ -3,7 +3,7 @@
 define([
 	'socket.io-stream',
 
-	'../../public/enums/socketMessageEnum',
+	'public/enums/socketMessageEnum',
 	'public/controllers/errorsController'
 ],
 function(ss, smEnums, errorsCtlr){
